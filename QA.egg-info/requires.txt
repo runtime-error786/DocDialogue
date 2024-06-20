@@ -1,12 +1,9 @@
 openai
-langchain[all]
+langchain
 streamlit
 python-dotenv
 PyPDF2
-huggingface_hub
 chromadb
 langchain_community
 langchain_text_splitters
 langchain_chroma
-
--e .
