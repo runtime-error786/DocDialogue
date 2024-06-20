@@ -7,8 +7,12 @@ from langchain.vectorstores import Chroma
 from langchain_community.document_loaders import TextLoader
 
 def setup_qa_system(uploaded_file):
-    # Save the uploaded file to a temporary location
-    temp_file_path = os.path.join("temp", uploaded_file.name)
+    # Create the temp directory if it doesn't exist
+    temp_dir = "temp"
+    os.makedirs(temp_dir, exist_ok=True)
+    
+    # Save the uploaded file to the temp directory
+    temp_file_path = os.path.join(temp_dir, uploaded_file.name)
     with open(temp_file_path, "wb") as f:
         f.write(uploaded_file.getbuffer())
 
@@ -41,4 +45,3 @@ def setup_qa_system(uploaded_file):
 def answer_query(qa_chain, query):
     response = qa_chain({"query": query})
     return response["result"]
-    
